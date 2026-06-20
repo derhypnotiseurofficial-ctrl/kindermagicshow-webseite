@@ -1,0 +1,22 @@
+# Originaldateien (zu groß für GitHub)
+BILDER/
+assets/images/*.png
+assets/images/*.jpg
+
+# Favicon PNG behalten (Ausnahme)
+!assets/images/logo-small.png
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Interne Dokumente
+DEPLOYMENT-BRIEFING-ALL-INKL.md
+
+# Editor
+.vscode/
+.idea/
+
+# Interne Projektdateien
+.claude/
+BRIEFING-VORLAGE.md

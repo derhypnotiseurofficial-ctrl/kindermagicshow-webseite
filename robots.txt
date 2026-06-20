@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# PHP-Skripte nicht indexieren
+Disallow: /contact-handler.php
+
+# Sitemap
+Sitemap: https://kindermagicshow.de/sitemap.xml
+
+# Host
+Host: kindermagicshow.de

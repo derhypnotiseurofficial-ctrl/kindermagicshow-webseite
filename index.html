@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Tim – Kindershow, Zauberei & Comedy für unvergessliche Events</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Magic Tim bringt Magie, Lachen und Staunen zu Kindergeburtstagen, Schulshows, Stadtfesten und Firmenevents. Jetzt Show buchen!">
+  <meta name="keywords" content="Kindershow, Zauberer Kinder, Kindergeburtstag Zauberer, Schulshow, Zauberei, Magic Tim, Kindermagicshow, Zauberer buchen">
+  <meta name="author" content="Magic Tim">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kindermagicshow.de">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kindermagicshow.de">
+  <meta property="og:title" content="Magic Tim – Kindershow & Zauberei für unvergessliche Events">
+  <meta property="og:description" content="Magie, Lachen und Staunen für Kindergeburtstage, Schulshows, Stadtfeste und Firmenevents. Jetzt buchen!">
+  <meta property="og:image" content="https://kindermagicshow.de/assets/images/og-preview.jpg">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="kindermagicshow.de">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Magic Tim – Kindershow & Zauberei">
+  <meta name="twitter:description" content="Unvergessliche Zaubershows für jedes Event. Jetzt buchen!">
+  <meta name="twitter:image" content="https://kindermagicshow.de/assets/images/og-preview.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo-small.png">
+  <link rel="apple-touch-icon" href="assets/images/logo-small.png">
+
+  <!-- Preconnect für externe Ressourcen -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Google Fonts: Cinzel (magisch/elegant) + Nunito (lesbar/freundlich) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Magic Tim – Kindermagicshow",
+    "url": "https://kindermagicshow.de",
+    "logo": "https://kindermagicshow.de/assets/images/logo.webp",
+    "description": "Professionelle Kinder-Zaubershows für Kindergeburtstage, Schulen, Stadtfeste und Firmenevents.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "DE"
+    },
+    "telephone": "+49-160-7621067",
+    "email": "info@kindermagicshow.de",
+    "priceRange": "€€",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "sameAs": [
+      "https://www.instagram.com/kindermagicshow",
+      "https://www.facebook.com/kindermagicshow",
+      "https://www.youtube.com/@kindermagicshow"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Magic Tim – Startseite">
+        <img src="assets/images/logo.webp" alt="Magic Tim Logo" width="60" height="60" loading="eager">
+        <span class="nav-logo-text">Magic Tim</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navMenu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a href="#about" class="nav-link">Über uns</a></li>
+        <li><a href="#shows" class="nav-link">Shows</a></li>
+        <li><a href="#video" class="nav-link">Showreel</a></li>
+        <li><a href="#testimonials" class="nav-link">Referenzen</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#contact" class="nav-link nav-cta">Show buchen</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero" aria-label="Willkommen bei Magic Tim">
+      <!-- Partikel-Canvas -->
+      <canvas class="particle-canvas" id="particleCanvas" aria-hidden="true"></canvas>
+
+      <!-- Parallax Hintergrund-Glows -->
+      <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-3" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="hero-text">
+          <!-- Magischer Schriftzug-Effekt -->
+          <div class="hero-badge reveal-up">
+            <span class="sparkle-icon" aria-hidden="true">✦</span>
+            <span>Live-Entertainment für Kinder & Familien</span>
+            <span class="sparkle-icon" aria-hidden="true">✦</span>
+          </div>
+
+          <h1 class="hero-title reveal-up">
+            <span class="title-line">Magie,</span>
+            <span class="title-line title-accent">die begeistert!</span>
+          </h1>
+
+          <p class="hero-subtitle reveal-up">
+            Magic Tim & Tuddy – Comedy-Zauberei, die Kinder zum Staunen bringt<br>
+            und Erwachsene genauso begeistert.
+          </p>
+
+          <div class="hero-ctas reveal-up">
+            <a href="#contact" class="btn btn-primary btn-glow">
+              <span class="btn-icon" aria-hidden="true">🎩</span>
+              Show jetzt buchen
+            </a>
+            <a href="#about" class="btn btn-secondary">
+              Mehr erfahren
+              <span class="btn-arrow" aria-hidden="true">↓</span>
+            </a>
+          </div>
+
+          <!-- Trust-Indikatoren -->
+          <div class="hero-stats reveal-up">
+            <div class="stat-item">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Shows</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true">✦</div>
+            <div class="stat-item">
+              <span class="stat-number">15.000+</span>
+              <span class="stat-label">begeisterte Kinder</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true">✦</div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Zauberei garantiert</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero-Bild: Schwebendes Kind -->
+        <div class="hero-image reveal-right">
+          <div class="hero-image-glow" aria-hidden="true"></div>
+          <img
+            src="assets/images/hero-levitation.webp"
+            alt="Schwebender Junge mit Magic Tim und Tuddy – Levitations-Trick live auf der Bühne"
+            class="hero-img"
+            loading="eager"
+            width="560"
+            height="750"
+          >
+          <!-- Schwebende Sterne-Dekoration -->
+          <div class="floating-star star-1" aria-hidden="true">⭐</div>
+          <div class="floating-star star-2" aria-hidden="true">✨</div>
+          <div class="floating-star star-3" aria-hidden="true">⭐</div>
+        </div>
+      </div>
+
+      <!-- Scroll-Indicator -->
+      <a href="#about" class="scroll-indicator" aria-label="Weiter scrollen">
+        <div class="scroll-dot"></div>
+      </a>
+    </section>
+
+    <!-- ===================== ÜBER UNS ===================== -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <!-- Magie-Trennlinie oben -->
+      <div class="section-divider" aria-hidden="true">
+        <span class="divider-star">✦</span>
+        <span class="divider-line"></span>
+        <span class="divider-wand">🪄</span>
+        <span class="divider-line"></span>
+        <span class="divider-star">✦</span>
+      </div>
+
+      <div class="container">
+        <div class="about-grid">
+          <!-- Bild-Seite -->
+          <div class="about-images reveal-left">
+            <div class="about-img-main">
+              <img
+                src="assets/images/ballonmodelage.webp"
+                alt="Magic Tim und Tuddy bei der Ballonmodelage – farbenfrohe Luftballontiere für begeisterte Kinder"
+                loading="lazy"
+                width="450"
+                height="600"
+              >
+              <div class="about-img-badge">
+                <span class="badge-text">Seit 20+ Jahren</span>
+                <span class="badge-sub">auf der Bühne</span>
+              </div>
+            </div>
+            <div class="about-img-accent" aria-hidden="true">
+              <div class="magic-circle">
+                <span class="magic-circle-text">Magic</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text-Seite -->
+          <div class="about-text reveal-right">
+            <div class="section-tag">Wer steckt dahinter?</div>
+            <h2 id="about-heading" class="section-title">
+              Magic Tim & <span class="highlight">Tuddy</span>
+            </h2>
+            <p class="about-lead">
+              Wo Magie auf Herzenswärme trifft – ein Duo, das keine Show, sondern ein <strong>Erlebnis</strong> erschafft.
+            </p>
+            <p class="about-body">
+              Magic Tim ist professioneller Zauberkünstler, Comedian und Kinderentertainment-Spezialist mit über 500 Live-Shows und 15.000 begeisterten Kindern. Sein treuer Sidekick <strong>Tuddy</strong> – ein charmanter, witziger Charakter – sorgt dafür, dass selbst die schüchternsten Kinder mitmachen und mitlachen.
+            </p>
+            <p class="about-body">
+              Von der kleinen Kindergeburtstagshow bis zur großen Bühne auf Stadtfesten: Magic Tim kombiniert <strong>professionelle Zauberei</strong>, Comedy-Einlagen und interaktive Mitmach-Elemente zu einem Programm, das Kinder und Erwachsene gleichermaßen fesselt.
+            </p>
+
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">🎩</span>
+                <div>
+                  <strong>Interaktiv & partizipativ</strong>
+                  <p>Kinder werden Teil der Show</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">🦺</span>
+                <div>
+                  <strong>Pädagogisch wertvoll</strong>
+                  <p>Spaß mit Botschaft & Werten</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">📋</span>
+                <div>
+                  <strong>Professionell & zuverlässig</strong>
+                  <p>Vollversicherung & Vertrag</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">🌟</span>
+                <div>
+                  <strong>Maßgeschneidert</strong>
+                  <p>Jede Show individuell angepasst</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="#contact" class="btn btn-primary">Jetzt Termin anfragen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SHOWS / PAKETE ===================== -->
+    <section class="shows" id="shows" aria-labelledby="shows-heading">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">Was wir anbieten</div>
+          <h2 id="shows-heading" class="section-title">
+            Die <span class="highlight">perfekte Show</span><br>für jeden Anlass
+          </h2>
+          <p class="section-subtitle">
+            Von der intimen Kindergeburtstagshow bis zum großen Bühnenprogramm –<br>
+            Magic Tim passt die Show an Ihre Veranstaltung an.
+          </p>
+        </div>
+
+        <div class="shows-grid">
+          <!-- Karte 1: Kindergeburtstag -->
+          <article class="show-card reveal-up" aria-label="Angebot: Kindergeburtstag">
+            <div class="show-card-header">
+              <div class="show-icon" aria-hidden="true">🎂</div>
+              <div class="show-badge">Beliebt</div>
+            </div>
+            <h3 class="show-title">Kindergeburtstag</h3>
+            <p class="show-desc">
+              Zauberei, Lachen und Mitmachangebote für bis zu 20 Kinder. Die perfekte Überraschung für den kleinen Geburtstagszauber.
+            </p>
+            <ul class="show-features" role="list">
+              <li>✦ 30–60 Minuten Showprogramm</li>
+              <li>✦ Bis zu 20 Kinder ideal</li>
+              <li>✦ Interaktive Zaubertricks</li>
+              <li>✦ Ballonmodelage inklusive</li>
+              <li>✦ Altersgruppe 3–12 Jahre</li>
+            </ul>
+            <a href="#contact" class="btn btn-card">Termin anfragen <span aria-hidden="true">→</span></a>
+            <div class="show-card-glow" aria-hidden="true"></div>
+          </article>
+
+          <!-- Karte 2: Schulshow -->
+          <article class="show-card show-card-featured reveal-up" aria-label="Angebot: Schulshow">
+            <div class="show-card-header">
+              <div class="show-icon" aria-hidden="true">🏫</div>
+              <div class="show-badge show-badge-gold">Top-Buchung</div>
+            </div>
+            <h3 class="show-title">Schul- & Kitashow</h3>
+            <p class="show-desc">
+              Magische Unterhaltung mit pädagogischen Elementen für Schulen und Kindergärten. Inklusion, Werte und jede Menge Spaß!
+            </p>
+            <ul class="show-features" role="list">
+              <li>✦ 45–60 Minuten kompaktes Programm</li>
+              <li>✦ Bis zu 200+ Kinder möglich</li>
+              <li>✦ Pädagogische Botschaften</li>
+              <li>✦ Ohne Bühnen-Technik buchbar</li>
+              <li>✦ Altersgruppe 4–14 Jahre</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Termin anfragen <span aria-hidden="true">→</span></a>
+            <div class="show-card-glow" aria-hidden="true"></div>
+          </article>
+
+          <!-- Karte 3: Firmenevent / Stadtfest -->
+          <article class="show-card reveal-up" aria-label="Angebot: Firmenevent und Stadtfest">
+            <div class="show-card-header">
+              <div class="show-icon" aria-hidden="true">🎪</div>
+              <div class="show-badge">Große Bühne</div>
+            </div>
+            <h3 class="show-title">Firmenevent & Stadtfest</h3>
+            <p class="show-desc">
+              Professionelles Bühnenprogramm für Firmenveranstaltungen, Stadtfeste, Messen und große Familienfeiern.
+            </p>
+            <ul class="show-features" role="list">
+              <li>✦ 30–90 Minuten modular buchbar</li>
+              <li>✦ Jede Besucherzahl möglich</li>
+              <li>✦ Großbühnen-tauglich</li>
+              <li>✦ Licht & Ton nach Absprache</li>
+              <li>✦ Für alle Altersgruppen</li>
+            </ul>
+            <a href="#contact" class="btn btn-card">Termin anfragen <span aria-hidden="true">→</span></a>
+            <div class="show-card-glow" aria-hidden="true"></div>
+          </article>
+        </div>
+
+        <!-- Zusatz-Trick Bild -->
+        <div class="shows-feature reveal-up">
+          <div class="shows-feature-img">
+            <img
+              src="assets/images/ampel-trick.webp"
+              alt="Magic Tim und Tuddy führen den spektakulären Ampel-Trick vor – Publikum ist begeistert"
+              loading="lazy"
+              width="400"
+              height="533"
+            >
+          </div>
+          <div class="shows-feature-text">
+            <h3>Jede Show ist ein <span class="highlight">Unikat</span></h3>
+            <p>
+              Magic Tim arbeitet keine starren Programme ab. Jede Veranstaltung wird individuell vorbereitet – Alter der Kinder, Thema des Events, Wünsche der Gastgeber. Das Ergebnis: eine Show, über die noch Monate später geredet wird.
+            </p>
+            <p>
+              <strong>Vollversicherung, professionelle Bühnentechnik und jahrelange Erfahrung</strong> sorgen dafür, dass Ihr Event reibungslos läuft – von der ersten Anfrage bis zum letzten Applaus.
+            </p>
+            <a href="#contact" class="btn btn-secondary">Individuelles Angebot anfragen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VIDEO ===================== -->
+    <section class="video-section" id="video" aria-labelledby="video-heading">
+      <div class="video-bg-glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">Live erleben</div>
+          <h2 id="video-heading" class="section-title">
+            Unser <span class="highlight">Showreel</span>
+          </h2>
+          <p class="section-subtitle">
+            Ein Vorgeschmack auf das, was dich bei einem Live-Auftritt erwartet.
+          </p>
+        </div>
+
+        <div class="video-wrapper reveal-up">
+          <!-- YouTube-Embed Platzhalter – URL einfach ersetzen -->
+          <div class="video-placeholder" id="videoPlaceholder" role="button" tabindex="0" aria-label="Video abspielen">
+            <img
+              src="assets/images/show-01.webp"
+              alt="Vorschaubild des Magic Tim Showreels – Klick zum Abspielen"
+              loading="lazy"
+              class="video-thumb"
+            >
+            <div class="video-play-btn" aria-hidden="true">
+              <div class="play-icon">▶</div>
+            </div>
+            <div class="video-overlay-text">
+              <span>Showreel ansehen</span>
+            </div>
+          </div>
+          <!-- Echtes YouTube-Iframe – wird beim Klick eingeblendet -->
+          <!-- Ersetze VIDEO_ID mit deiner echten YouTube-Video-ID -->
+          <iframe
+            id="youtubeFrame"
+            class="youtube-frame hidden"
+            src=""
+            data-src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0"
+            title="Magic Tim Showreel – Kindershow Live-Auftritt"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS ===================== -->
+    <section class="testimonials" id="testimonials" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">Was andere sagen</div>
+          <h2 id="testimonials-heading" class="section-title">
+            Begeisterte <span class="highlight">Stimmen</span>
+          </h2>
+          <p class="section-subtitle">
+            Tausende glückliche Kinder und zufriedene Veranstalter sprechen für sich.
+          </p>
+        </div>
+
+        <div class="testimonials-slider reveal-up" id="testimonialsSlider">
+          <div class="testimonials-track" id="testimonialsTrack">
+
+            <article class="testimonial-card" aria-label="Bewertung von Familie Schneider">
+              <div class="testimonial-stars" aria-label="5 von 5 Sterne">★★★★★</div>
+              <blockquote class="testimonial-text">
+                „Magic Tim hat den Kindergeburtstag meines Sohnes zu einem absoluten Highlight gemacht! Die Kinder waren von der ersten bis zur letzten Minute vollkommen begeistert. Tuddy hat alle zum Lachen gebracht. Absolute Buchungsempfehlung!"
+              </blockquote>
+              <footer class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">🌟</div>
+                <div>
+                  <cite class="testimonial-name">Familie Schneider</cite>
+                  <span class="testimonial-role">Kindergeburtstag, Essen</span>
+                </div>
+              </footer>
+            </article>
+
+            <article class="testimonial-card" aria-label="Bewertung von Grundschule Bochum">
+              <div class="testimonial-stars" aria-label="5 von 5 Sterne">★★★★★</div>
+              <blockquote class="testimonial-text">
+                „Wir hatten Magic Tim für unser Schulfest gebucht – über 150 Kinder und alle waren hellauf begeistert. Das Programm war perfekt auf die Altersstufen abgestimmt und die pädagogischen Botschaften kamen super an. Definitiv wieder!"
+              </blockquote>
+              <footer class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">🏫</div>
+                <div>
+                  <cite class="testimonial-name">Frau Müller</cite>
+                  <span class="testimonial-role">Rektorin, Grundschule Bochum</span>
+                </div>
+              </footer>
+            </article>
+
+            <article class="testimonial-card" aria-label="Bewertung vom Stadtfest Dortmund">
+              <div class="testimonial-stars" aria-label="5 von 5 Sterne">★★★★★</div>
+              <blockquote class="testimonial-text">
+                „Für unser Stadtfest haben wir Magic Tim als Bühnenact gebucht – die Bühne war bei seiner Show komplett gefüllt! Professionell, pünktlich, absolut verlässlich. Er hat sogar den Ablauf perfekt mit unserem Moderator abgestimmt."
+              </blockquote>
+              <footer class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">🎪</div>
+                <div>
+                  <cite class="testimonial-name">Jens Weber</cite>
+                  <span class="testimonial-role">Eventmanager, Stadtfest Dortmund</span>
+                </div>
+              </footer>
+            </article>
+
+            <article class="testimonial-card" aria-label="Bewertung von Kita Sonnenschein Gelsenkirchen">
+              <div class="testimonial-stars" aria-label="5 von 5 Sterne">★★★★★</div>
+              <blockquote class="testimonial-text">
+                „Unsere Kita-Kinder haben noch tagelang über Magic Tim und Tuddy geredet! Die Show war genau richtig für die 3–6-Jährigen – nicht zu laut, nicht zu aufgedreht, aber voller Magie und Wärme. Wunderbar!"
+              </blockquote>
+              <footer class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">🌈</div>
+                <div>
+                  <cite class="testimonial-name">Erzieherin Petra K.</cite>
+                  <span class="testimonial-role">Kita Sonnenschein, Gelsenkirchen</span>
+                </div>
+              </footer>
+            </article>
+
+            <article class="testimonial-card" aria-label="Bewertung von Sabrina H. aus Oberhausen">
+              <div class="testimonial-stars" aria-label="5 von 5 Sterne">★★★★★</div>
+              <blockquote class="testimonial-text">
+                „Wir haben Magic Tim für den 6. Geburtstag unserer Tochter gebucht und waren überwältigt. Alle 15 Kinder saßen gebannt auf dem Boden und haben gestaunt, gelacht und mitgemacht. So eine Show hatten wir noch nicht!"
+              </blockquote>
+              <footer class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">🎂</div>
+                <div>
+                  <cite class="testimonial-name">Sabrina H.</cite>
+                  <span class="testimonial-role">Kindergeburtstag, Oberhausen</span>
+                </div>
+              </footer>
+            </article>
+
+            <article class="testimonial-card" aria-label="Bewertung von Thomas R. aus Duisburg">
+              <div class="testimonial-stars" aria-label="5 von 5 Sterne">★★★★★</div>
+              <blockquote class="testimonial-text">
+                „Als Organisator unseres Firmensommerfestes war ich begeistert wie reibungslos alles lief. Magic Tim hat 200 Gäste – Kinder und Erwachsene – gleichzeitig begeistert. Sehr professionell, herzlich und absolut zuverlässig."
+              </blockquote>
+              <footer class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">🏢</div>
+                <div>
+                  <cite class="testimonial-name">Thomas R.</cite>
+                  <span class="testimonial-role">Veranstalter, Sommerfest Duisburg</span>
+                </div>
+              </footer>
+            </article>
+
+            <article class="testimonial-card" aria-label="Bewertung von Andrea B. aus Herne">
+              <div class="testimonial-stars" aria-label="5 von 5 Sterne">★★★★★</div>
+              <blockquote class="testimonial-text">
+                „Magic Tim war unser Highlight beim Kitafest! Die Kinder haben herzhaft gelacht, mitgezaubert und am Ende wollte keiner nach Hause. Tuddy ist ein Charakter für sich – einfach zauberhaft! Nächstes Jahr kommen wir wieder!"
+              </blockquote>
+              <footer class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">✨</div>
+                <div>
+                  <cite class="testimonial-name">Andrea B., Kitaleitung</cite>
+                  <span class="testimonial-role">Kita Regenbogen, Herne</span>
+                </div>
+              </footer>
+            </article>
+
+          </div><!-- /.testimonials-track -->
+        </div>
+
+        <!-- Slider-Steuerung -->
+        <div class="slider-controls" aria-label="Slider-Steuerung">
+          <button class="slider-btn slider-prev" id="sliderPrev" aria-label="Vorherige Bewertung">‹</button>
+          <div class="slider-dots" id="sliderDots" role="group" aria-label="Slider-Navigation">
+            <!-- Dynamisch per JS -->
+          </div>
+          <button class="slider-btn slider-next" id="sliderNext" aria-label="Nächste Bewertung">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="faq" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">Häufige Fragen</div>
+          <h2 id="faq-heading" class="section-title">
+            Alles Wichtige auf <span class="highlight">einen Blick</span>
+          </h2>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-list reveal-up">
+
+            <details class="faq-item" open>
+              <summary class="faq-question">
+                <span>Wie früh muss ich buchen?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p>Ich empfehle eine Buchung mindestens <strong>4–6 Wochen im Voraus</strong>, besonders für Wochenenden und Ferienzeiten. Für Schulshows und größere Events bitte 2–3 Monate vorab anfragen, da diese Termine sehr begehrt sind. Spontananfragen nehme ich aber gerne entgegen – schreib einfach und ich schaue, was möglich ist!</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Für welche Altersgruppen ist die Show geeignet?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p>Die Show ist <strong>ab 3 Jahren</strong> geeignet und macht auch Erwachsenen Spaß! Das Programm wird individuell an die Altersgruppe angepasst. Für Kitas und Kindergartenkinder (3–6 Jahre) gibt es ein sanfteres, interaktiveres Programm. Für Schulkinder (6–14 Jahre) enthält die Show mehr Comedy und anspruchsvollere Tricks.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Welche technischen Anforderungen gibt es?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p>Für Kindergeburtstage benötige ich nur eine <strong>Steckdose und etwas Platz</strong> (ca. 3×3 Meter). Für Schulshows und Bühnenshows bringe ich mein eigenes Equipment mit. Für große Bühnen klären wir die Technik individuell. Outdoor-Shows sind ebenfalls möglich!</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Wie weit reist Magic Tim an?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p>Ich bin <strong>deutschlandweit buchbar</strong>! Anfahrtskosten werden nach Entfernung berechnet und transparent im Angebot ausgewiesen. Für Events im Umkreis von 50 km fallen keine oder nur geringe Anfahrtskosten an. Für weite Strecken sprechen wir die Kosten im Vorfeld ab.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Gibt es eine Anzahlung / wie läuft die Buchung ab?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p>Nach deiner Anfrage sende ich dir ein unverbindliches Angebot. Nach Auftragsbestätigung gibt es einen <strong>professionellen Vertrag</strong> und eine Anzahlung von 30 %. Der Restbetrag wird nach der Show berechnet. Ich bin vollversichert und verfüge über alle relevanten Nachweise (z. B. erweitertes polizeiliches Führungszeugnis für Schulen).</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Kann ich ein individuelles Thema / Motto wünschen?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p>Ja, absolut! <strong>Individuelle Motto-Shows</strong> sind meine Spezialität. Ob Superhelden, Prinzessinnen, Piraten oder ein bestimmtes Lernthema für die Schule – ich integriere deine Wünsche ins Programm. Einfach bei der Buchungsanfrage angeben!</p>
+              </div>
+            </details>
+
+          </div><!-- /.faq-list -->
+
+          <!-- FAQ Kontakt-Teaser -->
+          <aside class="faq-cta-box reveal-right">
+            <div class="faq-cta-icon" aria-hidden="true">🎩</div>
+            <h3>Noch eine Frage?</h3>
+            <p>Schreib mir direkt – ich antworte innerhalb von 24 Stunden!</p>
+            <a href="#contact" class="btn btn-primary">Jetzt Kontakt aufnehmen</a>
+            <div class="faq-cta-contact">
+              <a href="tel:+491607621067">📞 +49 (0) 160 762 1067</a>
+              <a href="mailto:info@kindermagicshow.de">✉ info@kindermagicshow.de</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== KONTAKT / BUCHUNG ===================== -->
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <div class="contact-bg-glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">Lass uns loslegen</div>
+          <h2 id="contact-heading" class="section-title">
+            Jetzt <span class="highlight">Show buchen</span>
+          </h2>
+          <p class="section-subtitle">
+            Füll das Formular aus – ich melde mich innerhalb von 24 Stunden mit einem Angebot!
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Kontaktformular -->
+          <div class="contact-form-wrap reveal-left">
+            <form class="contact-form" id="contactForm" method="POST" action="contact-handler.php" novalidate>
+              <input type="hidden" name="csrf_token" id="csrfToken">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">Vorname <span class="required" aria-label="Pflichtfeld">*</span></label>
+                  <input type="text" id="firstName" name="firstName" placeholder="Max" required autocomplete="given-name">
+                  <span class="field-error" role="alert"></span>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Nachname <span class="required" aria-label="Pflichtfeld">*</span></label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Mustermann" required autocomplete="family-name">
+                  <span class="field-error" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">E-Mail <span class="required" aria-label="Pflichtfeld">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="max@beispiel.de" required autocomplete="email">
+                  <span class="field-error" role="alert"></span>
+                </div>
+                <div class="form-group">
+                  <label for="phone">WhatsApp Nummer</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+49 (0) 123 456 789" autocomplete="tel">
+                  <span class="field-error" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="eventType">Art der Veranstaltung <span class="required" aria-label="Pflichtfeld">*</span></label>
+                  <select id="eventType" name="eventType" required>
+                    <option value="" disabled selected>Bitte wählen...</option>
+                    <option value="kindergeburtstag">Kindergeburtstag</option>
+                    <option value="schulshow">Schulshow / Kita</option>
+                    <option value="stadtfest">Stadtfest / Gemeindeevent</option>
+                    <option value="firmenevent">Firmenevent</option>
+                    <option value="sommerfest">Sommerfest</option>
+                    <option value="weihnachtsfeier">Weihnachtsfeier</option>
+                    <option value="sonstiges">Sonstiges</option>
+                  </select>
+                  <span class="field-error" role="alert"></span>
+                </div>
+                <div class="form-group">
+                  <label for="eventDate">Wunschdatum</label>
+                  <input type="date" id="eventDate" name="eventDate" min="">
+                  <span class="field-error" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="guestCount">Anzahl der Gäste (ca.)</label>
+                  <select id="guestCount" name="guestCount">
+                    <option value="" disabled selected>Bitte wählen...</option>
+                    <option value="bis-15">Bis 15 Personen</option>
+                    <option value="15-30">15–30 Personen</option>
+                    <option value="30-50">30–50 Personen</option>
+                    <option value="50-100">50–100 Personen</option>
+                    <option value="100-200">100–200 Personen</option>
+                    <option value="200+">200+ Personen</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="location">Ort / Stadt</label>
+                  <input type="text" id="location" name="location" placeholder="Frankfurt am Main">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Deine Nachricht</label>
+                <textarea id="message" name="message" placeholder="Erzähl mir mehr über deine Veranstaltung, besondere Wünsche, Motto etc." rows="5"></textarea>
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <!-- Datenschutz-Checkbox -->
+              <div class="form-group form-checkbox">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="privacy" id="privacy" required>
+                  <span class="checkbox-custom" aria-hidden="true"></span>
+                  <span class="checkbox-text">
+                    Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten einverstanden. <span class="required" aria-label="Pflichtfeld">*</span>
+                  </span>
+                </label>
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <!-- Honeypot Anti-Spam -->
+              <div class="hp-field" aria-hidden="true">
+                <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-submit btn-glow" id="submitBtn">
+                <span class="btn-text">Anfrage absenden</span>
+                <span class="btn-icon" aria-hidden="true">🚀</span>
+                <span class="btn-loading" aria-hidden="true" hidden>⏳</span>
+              </button>
+
+              <p class="form-disclaimer">
+                * Pflichtfelder. Antwort innerhalb von 24 Stunden.
+              </p>
+            </form>
+
+            <!-- Erfolgs-/Fehler-Meldung -->
+            <div class="form-success" id="formSuccess" role="status" hidden>
+              <div class="success-icon" aria-hidden="true">🎉</div>
+              <h3>Anfrage erhalten!</h3>
+              <p>Vielen Dank! Ich melde mich innerhalb von 24 Stunden mit einem Angebot bei dir.</p>
+            </div>
+            <div class="form-error" id="formError" role="alert" hidden>
+              <p>⚠️ Ein Fehler ist aufgetreten. Bitte versuche es erneut oder schreib mir direkt per E-Mail.</p>
+            </div>
+          </div>
+
+          <!-- Kontakt-Info -->
+          <div class="contact-info reveal-right">
+            <div class="contact-info-card">
+              <h3>Direktkontakt</h3>
+              <ul class="contact-list" role="list">
+                <li>
+                  <span class="contact-list-icon" aria-hidden="true">💬</span>
+                  <div>
+                    <strong>WhatsApp</strong>
+                    <a href="https://wa.me/491607621067" target="_blank" rel="noopener noreferrer">+49 (0) 160 762 1067</a>
+                  </div>
+                </li>
+                <li>
+                  <span class="contact-list-icon" aria-hidden="true">✉</span>
+                  <div>
+                    <strong>E-Mail</strong>
+                    <a href="mailto:info@kindermagicshow.de">info@kindermagicshow.de</a>
+                  </div>
+                </li>
+                <li>
+                  <span class="contact-list-icon" aria-hidden="true">📍</span>
+                  <div>
+                    <strong>Einsatzgebiet</strong>
+                    <span>Deutschland, Österreich, Schweiz</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="contact-list-icon" aria-hidden="true">🕐</span>
+                  <div>
+                    <strong>Erreichbar</strong>
+                    <span>Mo–Fr 9:00–18:00 Uhr</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="contact-social">
+              <h3>Folge uns</h3>
+              <div class="social-links">
+                <a href="https://www.instagram.com/kindermagicshow" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  Instagram
+                </a>
+                <a href="https://www.facebook.com/kindermagicshow" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Facebook
+                </a>
+                <a href="https://www.youtube.com/@kindermagicshow" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                  YouTube
+                </a>
+                <a href="https://www.tiktok.com/@kindermagicshow" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                  TikTok
+                </a>
+              </div>
+            </div>
+
+            <!-- Trust-Badges -->
+            <div class="trust-badges">
+              <div class="trust-badge">
+                <span class="trust-badge-icon" aria-hidden="true">🛡️</span>
+                <span>Vollversichert</span>
+              </div>
+              <div class="trust-badge">
+                <span class="trust-badge-icon" aria-hidden="true">📋</span>
+                <span>Führungszeugnis</span>
+              </div>
+              <div class="trust-badge">
+                <span class="trust-badge-icon" aria-hidden="true">⭐</span>
+                <span>5-Sterne-Bewertungen</span>
+              </div>
+              <div class="trust-badge">
+                <span class="trust-badge-icon" aria-hidden="true">🤝</span>
+                <span>Vertrag & Sicherheit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-stars" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Marken-Spalte -->
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo" aria-label="Magic Tim – Startseite">
+            <img src="assets/images/logo.webp" alt="Magic Tim Logo" width="80" height="80" loading="lazy">
+          </a>
+          <p class="footer-tagline">Magie, die bleibt.</p>
+          <p class="footer-desc">
+            Magic Tim & Tuddy – professionelle Kinder-Zaubershows für unvergessliche Events in ganz Deutschland.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/kindermagicshow" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/kindermagicshow" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@kindermagicshow" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Schnell-Links -->
+        <nav class="footer-nav" aria-label="Footer-Navigation">
+          <h3 class="footer-nav-title">Navigation</h3>
+          <ul role="list">
+            <li><a href="#about">Über uns</a></li>
+            <li><a href="#shows">Shows & Pakete</a></li>
+            <li><a href="#video">Showreel</a></li>
+            <li><a href="#testimonials">Referenzen</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <!-- Show-Angebote -->
+        <nav class="footer-nav" aria-label="Unsere Shows">
+          <h3 class="footer-nav-title">Unsere Shows</h3>
+          <ul role="list">
+            <li><a href="#shows">Kindergeburtstag</a></li>
+            <li><a href="#shows">Schul- & Kitashow</a></li>
+            <li><a href="#shows">Stadtfest & Gemeinde</a></li>
+            <li><a href="#shows">Firmenevent</a></li>
+            <li><a href="#shows">Weihnachtsfeier</a></li>
+            <li><a href="#shows">Sommerfest</a></li>
+          </ul>
+        </nav>
+
+        <!-- Rechtliches -->
+        <nav class="footer-nav" aria-label="Rechtliche Links">
+          <h3 class="footer-nav-title">Kontakt & Recht</h3>
+          <ul role="list">
+            <li><a href="mailto:info@kindermagicshow.de">✉ info@kindermagicshow.de</a></li>
+            <li><a href="tel:+491607621067">📞 +49 (0) 160 762 1067</a></li>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
+            <li><a href="agb.html">AGB</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="currentYear"></span> Magic Tim – Kindermagicshow. Alle Rechte vorbehalten.</p>
+        <p>Designed with ✦ magic ✦ in Germany</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back-to-Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Zurück nach oben" hidden>
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <!-- Cookie-Hinweis (DSGVO) -->
+  <div class="cookie-banner" id="cookieBanner" role="alertdialog" aria-labelledby="cookieTitle" aria-describedby="cookieDesc">
+    <div class="cookie-content">
+      <p id="cookieTitle"><strong>🍪 Cookies & Datenschutz</strong></p>
+      <p id="cookieDesc">Diese Website verwendet essentielle Cookies für die Grundfunktionen. YouTube-Videos werden nur nach deiner Zustimmung geladen.</p>
+      <div class="cookie-buttons">
+        <button class="btn btn-primary" id="cookieAccept">Alles akzeptieren</button>
+        <button class="btn btn-secondary btn-sm" id="cookieDecline">Nur essentielle</button>
+        <a href="datenschutz.html" class="cookie-link">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
