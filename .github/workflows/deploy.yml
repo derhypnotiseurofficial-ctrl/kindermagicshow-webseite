@@ -12,17 +12,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORT }}
-          protocol: ftps
-          port: 21
-          server-dir: /kindermagicshow.de/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            DEPLOYMENT-BRIEFING-ALL-INKL.md
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
+      - name: Deploy via FTPS
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.FTP_PASSWORT }}
+        run: |
+          lftp -c "
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            set ssl:verify-certificate false;
+            set net:timeout 30;
+            set net:max-retries 3;
+            open -u '$FTP_USER','$FTP_PASS' '$FTP_HOST';
+            mirror --reverse --delete --verbose --no-perms \
+              --exclude .git \
+              --exclude .github \
+              --exclude DEPLOYMENT-BRIEFING-ALL-INKL.md \
+              --exclude BRIEFING-VORLAGE.md \
+              . /kindermagicshow.de/;
+            bye
+          "
