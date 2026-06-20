@@ -2214,44 +2214,64 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   /* Nav Mobile */
   .nav-toggle {
     display: flex;
+    z-index: 1001;
   }
 
+  .nav-logo img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .nav-logo-text {
+    font-size: 1rem;
+  }
+
+  /* iOS-sicheres Verstecken ohne transform+backdrop-filter Bug */
   .nav-menu {
     position: fixed;
     top: var(--nav-height);
     left: 0;
     right: 0;
-    background: rgba(10, 22, 40, 0.98);
-    backdrop-filter: blur(20px);
+    bottom: 0;
+    background: rgba(8, 18, 36, 0.98);
     flex-direction: column;
     gap: 0;
-    padding: 1rem 0 2rem;
-    transform: translateY(-110%);
-    transition: transform var(--transition-slow);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    z-index: 999;
+    padding: 1.5rem 0 3rem;
+    border-top: 1px solid rgba(245,197,24,0.15);
+    z-index: 1000;
+    /* Sicher versteckt via opacity+visibility statt transform */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
   }
 
   .nav-menu.open {
-    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .nav-link {
     padding: 1rem 2rem;
     border-radius: 0;
-    font-size: 1rem;
+    font-size: 1.05rem;
     width: 100%;
     white-space: nowrap;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
   .nav-link::after { display: none; }
 
   .nav-link.nav-cta {
-    margin: 1rem 2rem 0;
-    width: calc(100% - 4rem);
+    margin: 1.5rem 1.5rem 0;
+    width: calc(100% - 3rem);
     text-align: center;
-    justify-content: center;
+    display: block;
     border-radius: var(--radius-full);
+    border-bottom: none;
+    padding: 0.85rem 1.5rem;
   }
 
   /* Hero Mobile */
