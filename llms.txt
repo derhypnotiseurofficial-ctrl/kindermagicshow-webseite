@@ -2,17 +2,12 @@
 
 > Magic Tim (Timo Dante) ist professioneller Zauberkünstler, Comedian und Kinderentertainment-Spezialist im Ruhrgebiet. Zusammen mit seinem Sidekick Tuddy bietet er Comedy-Zaubershows für Kindergeburtstage, Schulen, Kitas, Stadtfeste und Firmenevents.
 
-## Angebote
-- Kindergeburtstag-Show: 30–60 Minuten, bis zu 20 Kinder, Altersgruppe 3–12 Jahre
-- Schul- & Kitashow: 45–60 Minuten, bis zu 200+ Kinder, pädagogische Botschaften
-- Firmenevent & Stadtfest: 30–90 Minuten, modular, alle Altersgruppen
+## Seiten
 
-## Kontakt
-- Website: https://kindermagicshow.de
-- WhatsApp / Telefon: +49 160 762 1067
-- E-Mail: info@kindermagicshow.de
-- Standort: Oberhausen, Ruhrgebiet, Deutschland
+- [Startseite](https://kindermagicshow.de/): Übersicht über alle Shows, Buchungsanfrage und Referenzen
+- [Impressum](https://kindermagicshow.de/impressum.html): Angaben gemäß § 5 TMG
+- [Datenschutz](https://kindermagicshow.de/datenschutz.html): Datenschutzerklärung gemäß DSGVO
 
-## Rechtliches
-- Impressum: https://kindermagicshow.de/impressum.html
-- Datenschutz: https://kindermagicshow.de/datenschutz.html
+## Optional
+
+- [Kontaktformular](https://kindermagicshow.de/#contact): Buchungsanfrage direkt stellen
