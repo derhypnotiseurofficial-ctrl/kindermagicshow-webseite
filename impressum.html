@@ -8,7 +8,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo-small.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/styles.css">
   <style>
     .legal-page {
@@ -77,7 +78,12 @@
         <img src="assets/images/logo.webp" alt="Magic Tim Logo" width="60" height="60" loading="eager">
         <span class="nav-logo-text">Magic Tim</span>
       </a>
-      <ul class="nav-menu" style="transform: none; position: static; background: transparent; padding: 0; flex-direction: row; display: flex;">
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navMenu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-menu" id="navMenu" role="list">
         <li><a href="index.html#shows" class="nav-link">Shows</a></li>
         <li><a href="index.html#contact" class="nav-link nav-cta">Show buchen</a></li>
       </ul>

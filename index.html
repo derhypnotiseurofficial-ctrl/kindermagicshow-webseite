@@ -35,9 +35,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="dns-prefetch" href="https://i.ytimg.com">
 
-  <!-- Google Fonts: Cinzel (magisch/elegant) + Nunito (lesbar/freundlich) -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Hero-Bild vorausladen (LCP) -->
+  <link rel="preload" as="image" href="assets/images/hero-levitation.webp">
+
+  <!-- Google Fonts: nicht-blockierend laden -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Nunito:wght@300;400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Nunito:wght@300;400;600;700;800&display=swap"></noscript>
 
   <!-- GSAP CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -166,6 +172,7 @@
             alt="Schwebender Junge mit Magic Tim und Tuddy – Levitations-Trick live auf der Bühne"
             class="hero-img"
             loading="eager"
+            fetchpriority="high"
             width="560"
             height="750"
           >
