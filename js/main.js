@@ -7,21 +7,25 @@
 
 // ─── DOM bereit ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  initParticles();
+  // Kritisch: sofort für erste Interaktion
   initNavbar();
-  initScrollReveal();
-  initParallax();
-  initGalleryLightbox();
-  initTestimonialsSlider();
-  initFAQ();
-  initContactForm();
-  initVideoSection();
-  initBackToTop();
-  initCookieBanner();
   initHeroReveal();
   setCurrentYear();
   setMinDate();
-  initMagicCursor();
+
+  // Nach erstem Paint: schwere Animationen & Below-Fold-Logik
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    initParticles();
+    initScrollReveal();
+    initParallax();
+    initTestimonialsSlider();
+    initFAQ();
+    initContactForm();
+    initVideoSection();
+    initBackToTop();
+    initCookieBanner();
+    initMagicCursor();
+  }));
 });
 
 /* ─── 1. PARTIKEL-CANVAS (Sterne-Hintergrund) ──────── */
@@ -232,10 +236,6 @@ function initScrollReveal() {
     card.style.transitionDelay = `${i * 0.12}s`;
   });
 
-  document.querySelectorAll('.gallery-item').forEach((item, i) => {
-    item.style.transitionDelay = `${i * 0.08}s`;
-  });
-
   document.querySelectorAll('.highlight-item').forEach((item, i) => {
     item.style.transitionDelay = `${i * 0.1}s`;
   });
@@ -290,97 +290,6 @@ function initParallax() {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-}
-
-/* ─── 6. GALERIE & LIGHTBOX ─────────────────────────── */
-function initGalleryLightbox() {
-  const items     = document.querySelectorAll('.gallery-item');
-  const lightbox  = document.getElementById('lightbox');
-  const lb_img    = document.getElementById('lightboxImg');
-  const lb_cap    = document.getElementById('lightboxCaption');
-  const lb_close  = document.getElementById('lightboxClose');
-  const lb_prev   = document.getElementById('lightboxPrev');
-  const lb_next   = document.getElementById('lightboxNext');
-  const lb_back   = document.getElementById('lightboxBackdrop');
-
-  if (!lightbox || !items.length) return;
-
-  let currentIndex = 0;
-
-  // Bilder-Daten aus DOM extrahieren
-  const images = Array.from(items).map(item => ({
-    src:     item.querySelector('img')?.src || '',
-    alt:     item.querySelector('img')?.alt || '',
-    caption: item.querySelector('.gallery-caption')?.textContent || ''
-  }));
-
-  function openLightbox(index) {
-    currentIndex = index;
-    updateLightboxImage();
-    lightbox.removeAttribute('hidden');
-    document.body.style.overflow = 'hidden';
-    lb_close.focus();
-  }
-
-  function closeLightbox() {
-    lightbox.setAttribute('hidden', '');
-    document.body.style.overflow = '';
-    items[currentIndex]?.focus();
-  }
-
-  function updateLightboxImage() {
-    const img = images[currentIndex];
-    if (!img) return;
-    lb_img.src = img.src;
-    lb_img.alt = img.alt;
-    lb_cap.textContent = img.caption;
-    lb_prev.disabled = currentIndex === 0;
-    lb_next.disabled = currentIndex === images.length - 1;
-  }
-
-  function prevImage() {
-    if (currentIndex > 0) { currentIndex--; updateLightboxImage(); }
-  }
-
-  function nextImage() {
-    if (currentIndex < images.length - 1) { currentIndex++; updateLightboxImage(); }
-  }
-
-  // Event Listeners
-  items.forEach((item, i) => {
-    item.addEventListener('click', () => openLightbox(i));
-    item.setAttribute('role', 'button');
-    item.setAttribute('tabindex', '0');
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); }
-    });
-  });
-
-  lb_close.addEventListener('click', closeLightbox);
-  lb_back.addEventListener('click', closeLightbox);
-  lb_prev.addEventListener('click', prevImage);
-  lb_next.addEventListener('click', nextImage);
-
-  // Tastaturnavigation
-  document.addEventListener('keydown', (e) => {
-    if (lightbox.hasAttribute('hidden')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') prevImage();
-    if (e.key === 'ArrowRight') nextImage();
-  });
-
-  // Touch-Swipe
-  let touchStartX = 0;
-  lightbox.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-
-  lightbox.addEventListener('touchend', (e) => {
-    const delta = e.changedTouches[0].screenX - touchStartX;
-    if (Math.abs(delta) > 50) {
-      delta > 0 ? prevImage() : nextImage();
-    }
-  }, { passive: true });
 }
 
 /* ─── 7. TESTIMONIALS SLIDER ────────────────────────── */
