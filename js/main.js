@@ -445,8 +445,7 @@ function initContactForm() {
 
   // Validierungsregeln
   const rules = {
-    firstName: { required: true, min: 2,  msg: 'Bitte gib deinen Vornamen ein (min. 2 Zeichen).' },
-    lastName:  { required: true, min: 2,  msg: 'Bitte gib deinen Nachnamen ein (min. 2 Zeichen).' },
+    name:      { required: true, min: 2,  msg: 'Bitte gib deinen Namen ein (min. 2 Zeichen).' },
     email:     { required: true, email: true, msg: 'Bitte gib eine gültige E-Mail-Adresse ein.' },
     eventType: { required: true, msg: 'Bitte wähle eine Veranstaltungsart.' },
     privacy:   { required: true, checkbox: true, msg: 'Bitte stimme der Datenschutzerklärung zu.' }

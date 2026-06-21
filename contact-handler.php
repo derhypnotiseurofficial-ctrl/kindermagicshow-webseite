@@ -32,8 +32,7 @@ function clean(string $str): string {
     return htmlspecialchars(strip_tags(trim($str)), ENT_QUOTES, 'UTF-8');
 }
 
-$firstName  = clean($_POST['firstName']  ?? '');
-$lastName   = clean($_POST['lastName']   ?? '');
+$name       = clean($_POST['name']       ?? '');
 $email      = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
 $phone      = clean($_POST['phone']      ?? '');
 $eventType  = clean($_POST['eventType']  ?? '');
@@ -45,8 +44,7 @@ $privacy    = !empty($_POST['privacy']);
 
 // ─── Pflichtfeld-Validierung ─────────────────────────
 $errors = [];
-if (strlen($firstName) < 2)                       $errors[] = 'Vorname ungültig.';
-if (strlen($lastName)  < 2)                       $errors[] = 'Nachname ungültig.';
+if (strlen($name) < 2)                            $errors[] = 'Name ungültig.';
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))   $errors[] = 'E-Mail ungültig.';
 if (empty($eventType))                            $errors[] = 'Veranstaltungsart fehlt.';
 if (!$privacy)                                    $errors[] = 'Datenschutzzustimmung fehlt.';
@@ -75,7 +73,7 @@ $phoneLabel = $phone      ?: 'Nicht angegeben';
 $msgLabel   = nl2br(htmlspecialchars($message ?: 'Keine Nachricht', ENT_QUOTES, 'UTF-8'));
 
 // ─── Buchungsanfrage-Mail an Magic Tim ───────────────
-$subject = "Neue Buchungsanfrage: {$eventLabel} – {$firstName} {$lastName}";
+$subject = "Neue Buchungsanfrage: {$eventLabel} – {$name}";
 
 $body = "<!DOCTYPE html><html lang=\"de\"><head><meta charset=\"utf-8\">
 <style>
@@ -93,7 +91,7 @@ $body = "<!DOCTYPE html><html lang=\"de\"><head><meta charset=\"utf-8\">
 <div class=\"wrap\">
   <div class=\"hdr\"><h1>✦ Neue Buchungsanfrage ✦</h1><p>kindermagicshow.de</p></div>
   <div class=\"bdy\">
-    <div class=\"row\"><span class=\"lbl\">Name</span><div class=\"val\">{$firstName} {$lastName}</div></div>
+    <div class=\"row\"><span class=\"lbl\">Name</span><div class=\"val\">{$name}</div></div>
     <div class=\"row\"><span class=\"lbl\">E-Mail</span><div class=\"val\"><a href=\"mailto:{$email}\" style=\"color:#3a6fd8\">{$email}</a></div></div>
     <div class=\"row\"><span class=\"lbl\">WhatsApp / Telefon</span><div class=\"val\">{$phoneLabel}</div></div>
     <div class=\"row\"><span class=\"lbl\">Veranstaltungsart</span><div class=\"val\">{$eventLabel}</div></div>
@@ -108,7 +106,7 @@ $body = "<!DOCTYPE html><html lang=\"de\"><head><meta charset=\"utf-8\">
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 $headers .= "From: " . FROM_NAME . " <" . FROM_EMAIL . ">\r\n";
-$headers .= "Reply-To: {$firstName} {$lastName} <{$email}>\r\n";
+$headers .= "Reply-To: {$name} <{$email}>\r\n";
 
 $sent = mail(TO_EMAIL, $subject, $body, $headers);
 
@@ -133,12 +131,12 @@ $confirmBody = "<!DOCTYPE html><html lang=\"de\"><head><meta charset=\"utf-8\">
   .ftr{background:#f8f9ff;padding:18px 32px;text-align:center;font-size:12px;color:#9ca3af;border-top:1px solid #e5e7eb}
 </style></head><body>
 <div class=\"wrap\">
-  <div class=\"hdr\"><h1>✨ Danke, {$firstName}!</h1><p>Deine Anfrage ist angekommen.</p></div>
+  <div class=\"hdr\"><h1>✨ Danke, {$name}!</h1><p>Deine Anfrage ist angekommen.</p></div>
   <div class=\"bdy\">
-    <p>Hallo <span class=\"hl\">{$firstName}</span>,</p>
+    <p>Hallo <span class=\"hl\">{$name}</span>,</p>
     <p>deine Buchungsanfrage für eine <span class=\"hl\">{$eventLabel}</span> ist bei mir eingegangen! Ich freue mich sehr und melde mich innerhalb von <span class=\"hl\">24 Stunden</span> persönlich bei dir.</p>
     <p>Schau gerne schon mal auf Instagram vorbei:</p>
-    <a class=\"cta\" href=\"https://www.instagram.com/kindermagicshow\">Instagram ansehen</a>
+    <a class=\"cta\" href=\"https://www.instagram.com/KinderMagicShow.de\">Instagram ansehen</a>
     <p style=\"text-align:center;font-size:13px;color:#9ca3af\">Fragen? Erreichst du mich unter:<br>
     <a href=\"mailto:" . TO_EMAIL . "\" style=\"color:#1a2d6e\">" . TO_EMAIL . "</a></p>
   </div>
