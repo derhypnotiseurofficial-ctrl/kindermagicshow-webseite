@@ -1192,6 +1192,33 @@ input, textarea, select {
   display: block;
   object-fit: contain;
   background: #000;
+  cursor: pointer;
+}
+
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.video-play-overlay svg {
+  width: 72px;
+  height: 72px;
+  opacity: 0.38;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  transition: opacity 0.3s ease;
+}
+
+#videoWrapper:hover .video-play-overlay svg {
+  opacity: 0.6;
+}
+
+.video-play-overlay.hidden {
+  opacity: 0;
 }
 
 .video-cta {

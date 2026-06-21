@@ -571,7 +571,24 @@ function initContactForm() {
 
 /* ─── 10. VIDEO ─────────────────────────────────────── */
 function initVideoSection() {
-  // Nativer HTML5-Player – nichts zu initialisieren
+  const video   = document.getElementById('trailerVideo');
+  const overlay = document.getElementById('videoPlayOverlay');
+  if (!video || !overlay) return;
+
+  function toggle() {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  }
+
+  video.addEventListener('click', toggle);
+  overlay.addEventListener('click', toggle);
+
+  video.addEventListener('play',  () => overlay.classList.add('hidden'));
+  video.addEventListener('pause', () => overlay.classList.remove('hidden'));
+  video.addEventListener('ended', () => overlay.classList.remove('hidden'));
 }
 
 /* ─── 11. BACK TO TOP ───────────────────────────────── */

@@ -53,7 +53,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=7">
+  <link rel="stylesheet" href="css/styles.css?v=8">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -428,20 +428,25 @@
           </p>
         </div>
 
-        <div class="video-wrapper reveal-up">
+        <div class="video-wrapper reveal-up" id="videoWrapper">
           <video
             id="trailerVideo"
             class="trailer-video"
             poster="assets/images/video-poster.webp"
-            controls
             playsinline
             preload="none"
             width="1280"
             height="720"
           >
-            <source src="assets/video/trailer.webm" type="video/webm">
             <source src="assets/video/trailer.mp4" type="video/mp4">
+            <source src="assets/video/trailer.webm" type="video/webm">
           </video>
+          <div class="video-play-overlay" id="videoPlayOverlay" aria-label="Abspielen">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.2" fill="rgba(0,0,0,0.18)"/>
+              <path d="M10 8.5l6 3.5-6 3.5V8.5z" fill="white"/>
+            </svg>
+          </div>
         </div>
 
       </div>
@@ -955,6 +960,6 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=6" defer></script>
+  <script src="js/main.js?v=7" defer></script>
 </body>
 </html>
