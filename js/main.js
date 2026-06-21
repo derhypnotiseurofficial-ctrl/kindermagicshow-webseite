@@ -578,23 +578,46 @@ function initVideoSection() {
 
   if (!placeholder || !playerDiv) return;
 
-  function startVideo() {
-    // Iframe direkt im User-Gesture erstellen → funktioniert auf Chrome + Safari iOS
-    const f = document.createElement('iframe');
-    f.src = 'https://www.youtube.com/embed/UeQHYuyDZcg' +
-            '?autoplay=1&playsinline=1&rel=0&controls=0' +
-            '&modestbranding=1&iv_load_policy=3&disablekb=1&showinfo=0';
-    f.setAttribute('allow', 'autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-    f.setAttribute('allowfullscreen', '');
-    f.setAttribute('title', 'Magic Tim Showreel');
-    // Inline-Crop: 10% oben + unten abschneiden → YouTube-Overlays (Titel, Logo) unsichtbar
-    f.style.cssText = 'position:absolute;top:-10%;left:0;width:100%;height:120%;border:none;';
-    playerDiv.innerHTML = '';
-    playerDiv.appendChild(f);
+  let apiReady = false;
 
+  window.onYouTubeIframeAPIReady = function() { apiReady = true; };
+
+  // API vorladen sobald Video-Bereich sichtbar → beim Klick sofort bereit
+  new IntersectionObserver((entries, obs) => {
+    if (!entries[0].isIntersecting) return;
+    obs.disconnect();
+    if (document.querySelector('script[src*="youtube.com/iframe_api"]')) return;
+    const s = document.createElement('script');
+    s.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(s);
+  }, { rootMargin: '300px' }).observe(placeholder);
+
+  function createPlayer() {
+    new YT.Player('youtubePlayer', {
+      videoId: 'UeQHYuyDZcg',
+      playerVars: {
+        autoplay: 1, playsinline: 1, rel: 0,
+        modestbranding: 1, controls: 0,
+        iv_load_policy: 3, disablekb: 1
+      },
+      events: {
+        onReady: (e) => e.target.playVideo()
+      }
+    });
+  }
+
+  function startVideo() {
     playerDiv.classList.remove('hidden');
     placeholder.classList.add('hidden');
     if (cookieHint) cookieHint.classList.add('hidden');
+    if (apiReady) {
+      createPlayer();
+    } else {
+      const t = setInterval(() => {
+        if (window.YT && window.YT.Player) { clearInterval(t); apiReady = true; createPlayer(); }
+      }, 50);
+      setTimeout(() => clearInterval(t), 5000);
+    }
   }
 
   function handleClick() {
@@ -610,7 +633,6 @@ function initVideoSection() {
     localStorage.setItem('cookieConsent', 'all');
     startVideo();
   });
-
   placeholder.addEventListener('click', handleClick);
   placeholder.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleClick(); }
