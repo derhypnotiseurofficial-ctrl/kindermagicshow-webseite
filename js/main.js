@@ -572,22 +572,53 @@ function initContactForm() {
 /* ─── 10. VIDEO ─────────────────────────────────────── */
 function initVideoSection() {
   const placeholder  = document.getElementById('videoPlaceholder');
-  const frame        = document.getElementById('youtubeFrame');
+  const playerDiv    = document.getElementById('youtubePlayer');
   const cookieHint   = document.getElementById('videoCookieHint');
   const cookieAccept = document.getElementById('videoCookieAccept');
 
-  if (!placeholder || !frame) return;
+  if (!placeholder || !playerDiv) return;
 
-  function playVideo() {
-    frame.src = frame.dataset.src || '';
-    frame.classList.remove('hidden');
-    placeholder.classList.add('hidden');
-    if (cookieHint) cookieHint.classList.add('hidden');
+  let apiReady   = false;
+  let pendingPlay = false;
+
+  window.onYouTubeIframeAPIReady = function() {
+    apiReady = true;
+    if (pendingPlay) createPlayer();
+  };
+
+  function loadApi() {
+    if (window.YT && window.YT.Player) { apiReady = true; return; }
+    const s = document.createElement('script');
+    s.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(s);
   }
 
-  function loadVideo() {
+  function createPlayer() {
+    pendingPlay = false;
+    new YT.Player('youtubePlayer', {
+      videoId: 'UeQHYuyDZcg',
+      playerVars: {
+        autoplay: 1, playsinline: 1, rel: 0,
+        modestbranding: 1, controls: 0,
+        iv_load_policy: 3, disablekb: 1, showinfo: 0
+      },
+      events: {
+        onReady: (e) => e.target.playVideo()
+      }
+    });
+  }
+
+  function startVideo() {
+    playerDiv.classList.remove('hidden');
+    placeholder.classList.add('hidden');
+    if (cookieHint) cookieHint.classList.add('hidden');
+    loadApi();
+    if (apiReady) { createPlayer(); } else { pendingPlay = true; }
+  }
+
+  function handleClick() {
     if (localStorage.getItem('cookieConsent') === 'all') {
-      playVideo();
+      startVideo();
     } else {
       placeholder.classList.add('hidden');
       if (cookieHint) cookieHint.classList.remove('hidden');
@@ -596,12 +627,12 @@ function initVideoSection() {
 
   cookieAccept?.addEventListener('click', () => {
     localStorage.setItem('cookieConsent', 'all');
-    playVideo();
+    startVideo();
   });
 
-  placeholder.addEventListener('click', loadVideo);
+  placeholder.addEventListener('click', handleClick);
   placeholder.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadVideo(); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleClick(); }
   });
 }
 

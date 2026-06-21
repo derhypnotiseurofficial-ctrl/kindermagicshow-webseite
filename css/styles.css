@@ -1227,6 +1227,18 @@ input, textarea, select {
   position: absolute;
   inset: 0;
   border: none;
+  overflow: hidden;
+}
+
+/* Iframe den YouTube IFrame API erstellt – leicht überdimensioniert um Overlays (Titel, Logo) wegzuschneiden */
+#youtubePlayer iframe {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  border: none;
+  pointer-events: auto;
 }
 
 .video-cookie-hint {
