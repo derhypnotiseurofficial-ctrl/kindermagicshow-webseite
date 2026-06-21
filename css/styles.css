@@ -1176,12 +1176,14 @@ input, textarea, select {
   max-width: 800px;
   margin-inline: auto;
   border-radius: var(--radius-xl);
-  overflow: hidden;
+  /* overflow: hidden entfernt – blockiert Safari Mac Video-Rendering */
+  clip-path: inset(0 round var(--radius-xl));
   box-shadow: var(--shadow-lg), 0 0 80px rgba(245,197,24,0.1);
   border: 1px solid rgba(245,197,24,0.15);
   aspect-ratio: 16 / 9;
   position: relative;
   background: var(--blue-dark);
+  isolation: isolate;
 }
 
 .trailer-video {
