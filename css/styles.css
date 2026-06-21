@@ -1193,6 +1193,8 @@ input, textarea, select {
   object-fit: contain;
   background: #000;
   cursor: pointer;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .video-play-overlay {
