@@ -578,23 +578,29 @@ function initVideoSection() {
 
   if (!placeholder || !playerDiv) return;
 
-  let apiReady   = false;
-  let pendingPlay = false;
+  let apiReady = false;
 
-  window.onYouTubeIframeAPIReady = function() {
-    apiReady = true;
-    if (pendingPlay) createPlayer();
-  };
+  // API sofort im Hintergrund laden sobald das Video sichtbar wird
+  window.onYouTubeIframeAPIReady = function() { apiReady = true; };
 
-  function loadApi() {
+  function preloadApi() {
     if (window.YT && window.YT.Player) { apiReady = true; return; }
+    if (document.querySelector('script[src*="youtube.com/iframe_api"]')) return;
     const s = document.createElement('script');
     s.src = 'https://www.youtube.com/iframe_api';
     document.head.appendChild(s);
   }
 
+  // API laden sobald Placeholder sichtbar
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      preloadApi();
+      observer.disconnect();
+    }
+  }, { rootMargin: '200px' });
+  observer.observe(placeholder);
+
   function createPlayer() {
-    pendingPlay = false;
     new YT.Player('youtubePlayer', {
       videoId: 'UeQHYuyDZcg',
       playerVars: {
@@ -612,8 +618,20 @@ function initVideoSection() {
     playerDiv.classList.remove('hidden');
     placeholder.classList.add('hidden');
     if (cookieHint) cookieHint.classList.add('hidden');
-    loadApi();
-    if (apiReady) { createPlayer(); } else { pendingPlay = true; }
+
+    if (apiReady) {
+      createPlayer();
+    } else {
+      // Fallback: kurz auf API warten (sollte bereits geladen sein)
+      const wait = setInterval(() => {
+        if (window.YT && window.YT.Player) {
+          clearInterval(wait);
+          apiReady = true;
+          createPlayer();
+        }
+      }, 50);
+      setTimeout(() => clearInterval(wait), 3000);
+    }
   }
 
   function handleClick() {
