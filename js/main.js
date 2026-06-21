@@ -571,72 +571,7 @@ function initContactForm() {
 
 /* ─── 10. VIDEO ─────────────────────────────────────── */
 function initVideoSection() {
-  const placeholder  = document.getElementById('videoPlaceholder');
-  const playerDiv    = document.getElementById('youtubePlayer');
-  const cookieHint   = document.getElementById('videoCookieHint');
-  const cookieAccept = document.getElementById('videoCookieAccept');
-
-  if (!placeholder || !playerDiv) return;
-
-  let apiReady = false;
-
-  window.onYouTubeIframeAPIReady = function() { apiReady = true; };
-
-  // API vorladen sobald Video-Bereich sichtbar → beim Klick sofort bereit
-  new IntersectionObserver((entries, obs) => {
-    if (!entries[0].isIntersecting) return;
-    obs.disconnect();
-    if (document.querySelector('script[src*="youtube.com/iframe_api"]')) return;
-    const s = document.createElement('script');
-    s.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(s);
-  }, { rootMargin: '300px' }).observe(placeholder);
-
-  function createPlayer() {
-    new YT.Player('youtubePlayer', {
-      videoId: 'UeQHYuyDZcg',
-      playerVars: {
-        autoplay: 1, playsinline: 1, rel: 0,
-        modestbranding: 1, controls: 0,
-        iv_load_policy: 3, disablekb: 1
-      },
-      events: {
-        onReady: (e) => e.target.playVideo()
-      }
-    });
-  }
-
-  function startVideo() {
-    playerDiv.classList.remove('hidden');
-    placeholder.classList.add('hidden');
-    if (cookieHint) cookieHint.classList.add('hidden');
-    if (apiReady) {
-      createPlayer();
-    } else {
-      const t = setInterval(() => {
-        if (window.YT && window.YT.Player) { clearInterval(t); apiReady = true; createPlayer(); }
-      }, 50);
-      setTimeout(() => clearInterval(t), 5000);
-    }
-  }
-
-  function handleClick() {
-    if (localStorage.getItem('cookieConsent') === 'all') {
-      startVideo();
-    } else {
-      placeholder.classList.add('hidden');
-      if (cookieHint) cookieHint.classList.remove('hidden');
-    }
-  }
-
-  cookieAccept?.addEventListener('click', () => {
-    localStorage.setItem('cookieConsent', 'all');
-    startVideo();
-  });
-  placeholder.addEventListener('click', handleClick);
-  placeholder.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleClick(); }
-  });
+  // Nativer HTML5-Player – nichts zu initialisieren
 }
 
 /* ─── 11. BACK TO TOP ───────────────────────────────── */
