@@ -602,31 +602,46 @@ function initBackToTop() {
 }
 
 /* ─── 12. COOKIE BANNER ─────────────────────────────── */
+function loadGoogleAnalytics() {
+  if (window._gaLoaded) return;
+  window._gaLoaded = true;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-87F7S6MG26';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', 'G-87F7S6MG26');
+}
+
 function initCookieBanner() {
   const banner  = document.getElementById('cookieBanner');
   const accept  = document.getElementById('cookieAccept');
   const decline = document.getElementById('cookieDecline');
 
+  // GA laden falls Einwilligung schon erteilt
+  if (localStorage.getItem('cookieConsent') === 'all') {
+    loadGoogleAnalytics();
+  }
+
   if (!banner) return;
 
-  // Schon entschieden?
+  // Schon entschieden → Banner ausblenden
   if (localStorage.getItem('cookieConsent')) {
     banner.classList.add('hidden');
     return;
   }
 
-  // Nach kurzer Verzögerung einblenden
-  setTimeout(() => {
-    banner.style.display = 'block';
-  }, 1500);
+  setTimeout(() => banner.style.display = 'block', 1500);
 
   function setCookie(type) {
     localStorage.setItem('cookieConsent', type);
     banner.classList.add('hidden');
-    if (type === 'all') window.cookieBannerAccepted = true;
+    if (type === 'all') loadGoogleAnalytics();
   }
 
-  accept?.addEventListener('click', () => setCookie('all'));
+  accept?.addEventListener('click',  () => setCookie('all'));
   decline?.addEventListener('click', () => setCookie('essential'));
 }
 
