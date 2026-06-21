@@ -429,10 +429,9 @@
         </div>
 
         <div class="video-wrapper reveal-up">
-          <!-- YouTube-Embed Platzhalter – URL einfach ersetzen -->
           <div class="video-placeholder" id="videoPlaceholder" role="button" tabindex="0" aria-label="Video abspielen">
             <img
-              src="assets/images/show-01.webp"
+              src="https://img.youtube.com/vi/UeQHYuyDZcg/maxresdefault.jpg"
               alt="Vorschaubild des Magic Tim Showreels – Klick zum Abspielen"
               loading="lazy"
               class="video-thumb"
@@ -443,6 +442,11 @@
             <div class="video-overlay-text">
               <span>Showreel ansehen</span>
             </div>
+          </div>
+          <!-- Cookie-Zustimmung für Video -->
+          <div class="video-cookie-hint hidden" id="videoCookieHint">
+            <p>Für das Video werden YouTube-Cookies gesetzt.</p>
+            <button class="btn btn-primary" id="videoCookieAccept">Akzeptieren &amp; Video abspielen</button>
           </div>
           <iframe
             id="youtubeFrame"

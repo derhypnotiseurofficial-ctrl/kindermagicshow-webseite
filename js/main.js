@@ -571,33 +571,33 @@ function initContactForm() {
 
 /* ─── 10. VIDEO ─────────────────────────────────────── */
 function initVideoSection() {
-  const placeholder = document.getElementById('videoPlaceholder');
-  const frame       = document.getElementById('youtubeFrame');
+  const placeholder  = document.getElementById('videoPlaceholder');
+  const frame        = document.getElementById('youtubeFrame');
+  const cookieHint   = document.getElementById('videoCookieHint');
+  const cookieAccept = document.getElementById('videoCookieAccept');
 
   if (!placeholder || !frame) return;
 
-  // Nur laden wenn Cookie-Zustimmung
-  function loadVideo() {
-    const consent = localStorage.getItem('cookieConsent');
-    if (consent !== 'all') {
-      // Zeige Cookie-Hinweis
-      if (window.cookieBannerAccepted !== true) {
-        alert('Bitte akzeptiere alle Cookies, um das Video abzuspielen.');
-        return;
-      }
-    }
-
-    const src = frame.dataset.src;
-    if (src && src.includes('VIDEO_ID')) {
-      // Platzhalter – noch keine echte Video-ID
-      alert('Bitte ersetze VIDEO_ID in index.html mit deiner echten YouTube-Video-ID.');
-      return;
-    }
-
-    frame.src = src || '';
+  function playVideo() {
+    frame.src = frame.dataset.src || '';
     frame.classList.remove('hidden');
     placeholder.classList.add('hidden');
+    if (cookieHint) cookieHint.classList.add('hidden');
   }
+
+  function loadVideo() {
+    if (localStorage.getItem('cookieConsent') === 'all') {
+      playVideo();
+    } else {
+      placeholder.classList.add('hidden');
+      if (cookieHint) cookieHint.classList.remove('hidden');
+    }
+  }
+
+  cookieAccept?.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'all');
+    playVideo();
+  });
 
   placeholder.addEventListener('click', loadVideo);
   placeholder.addEventListener('keydown', (e) => {

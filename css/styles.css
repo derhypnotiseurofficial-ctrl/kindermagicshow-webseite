@@ -1248,6 +1248,26 @@ input, textarea, select {
   border: none;
 }
 
+.video-cookie-hint {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 18, 36, 0.92);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  text-align: center;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+}
+
+.video-cookie-hint p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  margin: 0;
+}
+
 .video-cta {
   text-align: center;
   margin-top: 2rem;
