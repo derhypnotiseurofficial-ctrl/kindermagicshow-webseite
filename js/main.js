@@ -578,60 +578,23 @@ function initVideoSection() {
 
   if (!placeholder || !playerDiv) return;
 
-  let apiReady = false;
-
-  // API sofort im Hintergrund laden sobald das Video sichtbar wird
-  window.onYouTubeIframeAPIReady = function() { apiReady = true; };
-
-  function preloadApi() {
-    if (window.YT && window.YT.Player) { apiReady = true; return; }
-    if (document.querySelector('script[src*="youtube.com/iframe_api"]')) return;
-    const s = document.createElement('script');
-    s.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(s);
-  }
-
-  // API laden sobald Placeholder sichtbar
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      preloadApi();
-      observer.disconnect();
-    }
-  }, { rootMargin: '200px' });
-  observer.observe(placeholder);
-
-  function createPlayer() {
-    new YT.Player('youtubePlayer', {
-      videoId: 'UeQHYuyDZcg',
-      playerVars: {
-        autoplay: 1, playsinline: 1, rel: 0,
-        modestbranding: 1, controls: 0,
-        iv_load_policy: 3, disablekb: 1, showinfo: 0
-      },
-      events: {
-        onReady: (e) => e.target.playVideo()
-      }
-    });
-  }
-
   function startVideo() {
+    // Iframe direkt im User-Gesture erstellen → funktioniert auf Chrome + Safari iOS
+    const f = document.createElement('iframe');
+    f.src = 'https://www.youtube.com/embed/UeQHYuyDZcg' +
+            '?autoplay=1&playsinline=1&rel=0&controls=0' +
+            '&modestbranding=1&iv_load_policy=3&disablekb=1&showinfo=0';
+    f.setAttribute('allow', 'autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    f.setAttribute('allowfullscreen', '');
+    f.setAttribute('title', 'Magic Tim Showreel');
+    // Inline-Crop: 10% oben + unten abschneiden → YouTube-Overlays (Titel, Logo) unsichtbar
+    f.style.cssText = 'position:absolute;top:-10%;left:0;width:100%;height:120%;border:none;';
+    playerDiv.innerHTML = '';
+    playerDiv.appendChild(f);
+
     playerDiv.classList.remove('hidden');
     placeholder.classList.add('hidden');
     if (cookieHint) cookieHint.classList.add('hidden');
-
-    if (apiReady) {
-      createPlayer();
-    } else {
-      // Fallback: kurz auf API warten (sollte bereits geladen sein)
-      const wait = setInterval(() => {
-        if (window.YT && window.YT.Player) {
-          clearInterval(wait);
-          apiReady = true;
-          createPlayer();
-        }
-      }, 50);
-      setTimeout(() => clearInterval(wait), 3000);
-    }
   }
 
   function handleClick() {
