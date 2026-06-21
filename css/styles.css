@@ -818,6 +818,7 @@ input, textarea, select {
   width: 180px;
   padding: 0 2rem;
   border-right: 1px solid rgba(0,0,0,0.08);
+  background: #ffffff;
 }
 
 .ref-logo:last-child {
